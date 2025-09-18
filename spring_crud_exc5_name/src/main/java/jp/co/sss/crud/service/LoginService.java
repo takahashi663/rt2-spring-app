@@ -22,24 +22,14 @@ import jp.co.sss.crud.util.BeanManager;
  */
 @Service
 public class LoginService {
-@Autowired
-private EmployeeRepository repository;
+
 	/**
 	 * 従業員データアクセス用リポジトリ。
 	 * Spring DIによって自動注入されます。
 	 */
 	//TODO ここに記述
-public LoginResultBean execute(LoginForm loginForm) {
-
-	LoginResultBean loginResultBean = null;
-	Employee employee = repository.findByIdAndEmpPass(loginForm.getEmpId(), loginForm.getEmpPass());
-
-	EmployeeBean loginUser = BeanManager.copyEntityToBean(employee);
-
-	
-
-
-
+	@Autowired
+	private EmployeeRepository repository;
 
 	/**
 	 * ログイン認証処理を実行します。
@@ -59,7 +49,21 @@ public LoginResultBean execute(LoginForm loginForm) {
 	 *         </ul>
 	 */
 	//TODO ここに記述
-		if (loginUser != null) {
+	public LoginResultBean execute(LoginForm loginForm) {
+
+		
+		
+		
+		LoginResultBean loginResultBean = null;
+		Employee employee = repository.findByEmpIdAndEmpPass(loginForm.getEmpId(), loginForm.getEmpPass());
+
+		
+		
+		
+			
+		
+		if (employee != null) {
+			EmployeeBean loginUser = BeanManager.copyEntityToBean(employee);
 			loginResultBean = LoginResultBean.succeedLogin(loginUser);
 		} else {
 			loginResultBean = LoginResultBean.failLogin("社員ID、またはパスワードが間違っています。");
@@ -67,6 +71,6 @@ public LoginResultBean execute(LoginForm loginForm) {
 
 		return loginResultBean;
 
-
 	}
-}	
+	}	
+

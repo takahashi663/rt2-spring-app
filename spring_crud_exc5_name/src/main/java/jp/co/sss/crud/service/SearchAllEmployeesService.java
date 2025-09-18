@@ -20,19 +20,15 @@ import jp.co.sss.crud.util.BeanManager;
  */
 @Service
 public class SearchAllEmployeesService {
-	@Autowired
-	private EmployeeRepository repository;
+	
 	/**
 	 * 従業員データアクセス用リポジトリ。
 	 * Spring DIによって自動注入されます。
 	 */
 	//TODO ここに記述
+	@Autowired
+	private EmployeeRepository repository;
 	
-	BeanManager manager;
-	public List<Employee> execute(){
-		EmployeeBean employeeBean = null;
-		return repository.findAll();
-	}
 	/**
 	 * 全従業員情報を取得します。
 	 * 
@@ -42,7 +38,13 @@ public class SearchAllEmployeesService {
 	 * @return 全従業員のEmployeeBeanリスト（従業員ID昇順）。データが存在しない場合は空のリストを返却
 	 */
 	//TODO ここに記述
+	public List<EmployeeBean> execute(){
+		
+		List<Employee> empList = repository.findAllByOrderByEmpId();
+		List<EmployeeBean> returnEmployeeBeans = BeanManager.copyEntityListToBeanList(empList);
 	
+		return  returnEmployeeBeans;
+	}
 	}
 
 

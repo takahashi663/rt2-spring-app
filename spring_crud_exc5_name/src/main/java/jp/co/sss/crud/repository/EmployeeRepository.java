@@ -26,7 +26,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
 	 * @param empPass
 	 * @return
 	 */
-	Employee findByIdAndEmpPass(Integer empId, String empPass);
+	Employee findByEmpIdAndEmpPass(Integer empId, String empPass);
 
 	/**
 	 * 社員一覧(社員IDで並び替え)

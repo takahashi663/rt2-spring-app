@@ -5,10 +5,12 @@ import java.text.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jakarta.validation.Valid;
 import jp.co.sss.crud.bean.EmployeeBean;
 import jp.co.sss.crud.form.EmployeeForm;
 import jp.co.sss.crud.service.SearchForEmployeesByEmpIdService;
@@ -40,7 +42,7 @@ public class UpdateController {
 		EmployeeBean employee = null;
 
 		//TODO SearchForEmployeesByEmpIdService完成後にコメントを外す
-		//		employee = searchForEmployeesByEmpIdService.execute(empId);
+		employee = searchForEmployeesByEmpIdService.execute(empId);
 
 		employeeForm = BeanManager.copyBeanToForm(employee);
 		model.addAttribute("employeeForm", employee);
@@ -58,9 +60,13 @@ public class UpdateController {
 	 * @return 遷移先のビュー
 	 */
 	@RequestMapping(path = "/update/check", method = RequestMethod.POST)
-	public String checkUpdate(@ModelAttribute EmployeeForm employeeForm) {
-
-		return "update/update_check";
+	public String checkUpdate(@Valid@ModelAttribute EmployeeForm employeeForm,BindingResult result, Model model) {
+		if(result.hasErrors()) {
+			
+			return "update/update_input";
+		}else {
+			return "update/update_check";
+		}
 	}
 
 	/**
@@ -85,7 +91,7 @@ public class UpdateController {
 	public String completeUpdate(EmployeeForm employeeForm) {
 
 		//TODO UpdateEmployeeService完成後にコメントを外す
-		//		updateEmployeeService.execute(employeeForm);
+		updateEmployeeService.execute(employeeForm);
 
 		return "redirect:/update/complete";
 	}

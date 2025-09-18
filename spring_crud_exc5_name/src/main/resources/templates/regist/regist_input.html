@@ -10,10 +10,15 @@
 	
 	<div class="update">
 		<form th:action="@{/regist/check}" method="post" th:object="${employeeForm}">
+			<span th:each="error:${#fields.detailedErrors()}"> 
+				<span th:text="${error.message}" class="error"></span><br />
+			</span>
+			<span th:text="${errMessage}" class="error"></span>
 			<div class="form">
 				<div class="label">パスワード：</div>
 				<div class="input required">
 					<input type="password" th:field="*{empPass}" />
+				
 				</div>
 			</div>
 			
@@ -21,6 +26,7 @@
 				<div class="label">社員名：</div>
  				<div class="input required">
 					<input type="text" th:field="*{empName}" />
+					
 				</div>
 			</div>
 			
@@ -36,6 +42,7 @@
 				<div class="label">住所：</div>
 				<div class="input required">
 					<input type="text" th:field="*{address}" />
+					
 				</div>
 			</div>
 			
@@ -43,6 +50,7 @@
 				<div class="label">生年月日：(YYYY/MM/DD)</div>
 				<div class="input required">
 					<input type="text" th:field="*{birthday}" />
+				
 				</div>
 			</div>
 

@@ -2,23 +2,42 @@ package jp.co.sss.crud.form;
 
 import java.util.Date;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
+
+
+
 public class EmployeeForm {
 	/** 社員ID */
+	
+	
 	private Integer empId;
 
 	/** パスワード */
+	@NotBlank
+	@Pattern(regexp = "^[a-zA-Z0-9]{0,16}$",message="{Pattern.EmployeeForm.empPass}")
 	private String empPass;
 
 	/** 社員名 */
+	@NotBlank
+	@Size(max = 30,message="社員名は30文字以内で入力してください。")
 	private String empName;
 
 	/** 性別 */
 	private Integer gender;
 
 	/** 住所 */
+	@NotBlank
+	@Size(max = 60,message="社員名は60文字以内で入力してください。")
 	private String address;
 
 	/** 生年月日 */
+	@NotNull
+	@Past(message="{Past.EmployeeForm.birthday}")
 	private Date birthday;
 
 	/** 権限 */
