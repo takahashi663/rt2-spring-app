@@ -31,7 +31,7 @@ public class IndexController {
 
 		//アノテーションの選別をしている
 		if(result.hasErrors()) {
-			return "index.html";
+			return "index";
 		}
 		
 
