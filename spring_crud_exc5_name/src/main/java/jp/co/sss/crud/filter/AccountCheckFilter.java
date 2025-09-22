@@ -40,9 +40,9 @@ public class AccountCheckFilter extends HttpFilter {
 				response.sendRedirect("/spring_crud/");
 				
 				return;
-
+				
 			} else {
-				chain.doFilter(request, response);
+				chain.doFilter(request, response);//フィルターの中を通れる記述
 			}
 		}else {
 			chain.doFilter(request, response);

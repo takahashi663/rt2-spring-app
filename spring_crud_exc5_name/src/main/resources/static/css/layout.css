@@ -14,6 +14,7 @@ body {
 	justify-content:space-between;
 	width: 920px;
 	margin: 0px auto;
+	
 }
 
 .login {
@@ -24,7 +25,7 @@ body {
 header {
 	height: 60px;
 	width: 100%;
-	background-color: #87CEEB;
+	background-color: #fdbf64;
 	padding-top: 10px;
 }
 
@@ -47,10 +48,13 @@ header .user_info a {
 /* ---- サイドバー ---- */
 aside {
 	width: 200px;
+	background-color: #ffffff;
+	background-color: #fffaed;
+	background-color: #ffe8dc;
 }
 
 aside .title {
-	background-color: #add8e6;
+	background-color: #fdbf64;
 	margin: 5px 0px 10px 10px;
 	padding: 3px;
 	font-weight: bold;
@@ -58,6 +62,7 @@ aside .title {
 
 aside .form {
 	padding-left: 15px;
+
 }
 
 aside input[type=text] {
@@ -69,6 +74,7 @@ aside select {
 	margin: 0px 10px 0px 0px;
 	vertical-align: middle;
 	width: 110px;
+	
 }
 
 aside input[type=submit] {
@@ -81,13 +87,16 @@ article {
 	
 	width: 700px;
 	padding-left: 20px;
+	background-color: #ffffff;
+	background-color: #fffaed;
+	background-color: #ffe8dc;
+	
 }
-
 
 /* ---- フッター ---- */
 footer {
 	height: 30px;
-	background-color: #87CEEB;
+	background-color: #fdbf64;
 	text-align: center;
 	font-size: 8pt;
 	line-height: 30px;
