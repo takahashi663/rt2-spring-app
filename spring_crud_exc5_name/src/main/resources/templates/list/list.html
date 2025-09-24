@@ -38,6 +38,7 @@
 		<tr th:each="employee: ${employees}">
 			<td th:text="${employee.empId}"></td>
 			<td th:text="${employee.empName}"></td>
+			
 			<!--
 				th:switchとth:caseはJavaのswitch文の様に条件分岐を表現できる
 				この場合はgender=1の場合[男性]、gender=2の場合[女性]と表示される

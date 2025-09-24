@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.sss.crud.bean.EmployeeBean;
 import jp.co.sss.crud.service.SearchAllEmployeesService;
+import jp.co.sss.crud.service.SearchForEmployeeByAddressService;
+import jp.co.sss.crud.service.SearchForEmployeeByAuthorityService;
 import jp.co.sss.crud.service.SearchForEmployeesByDepartmentService;
 import jp.co.sss.crud.service.SearchForEmployeesByEmpNameService;
 
@@ -25,7 +27,12 @@ public class ListController {
 
 	@Autowired
 	SearchForEmployeesByDepartmentService searchForEmployeesByDepartmentService;
-
+	
+	@Autowired
+	SearchForEmployeeByAuthorityService searchForEmployeeByAuthorityService;
+	
+	@Autowired
+	SearchForEmployeeByAddressService searchForEmployeeByAddressService;
 	/**
 	 * 社員情報を全件検索した結果を出力
 	 *
@@ -52,6 +59,7 @@ public class ListController {
 	 * @return 遷移先のビュー
 	 * @throws ParseException 
 	 */
+	//社員名検索
 	@RequestMapping(path = "/list/empName", method = RequestMethod.GET)
 	public String findByEmpName(String empName, Model model) {
 
@@ -72,6 +80,7 @@ public class ListController {
 	 * @return 選先のビュー
 	 * @throws ParseException 
 	 */
+	//部署名検索
 	@RequestMapping(path = "/list/deptId", method = RequestMethod.GET)
 	public String findByDeptId(Integer deptId, Model model) {
 
@@ -83,4 +92,24 @@ public class ListController {
 		model.addAttribute("employees", searchByDepartmentList);
 		return "list/list";
 	}
+	//権限検索
+	@RequestMapping(path = "/list/authority", method = RequestMethod.GET)
+	public String findByAuthority(Integer authority, Model model) {
+
+		List<EmployeeBean> searchByAuthorityList = searchForEmployeeByAuthorityService.execute(authority);
+		model.addAttribute("employees", searchByAuthorityList);
+		return "list/list";
+	}
+	//住所検索
+	@RequestMapping(path = "/list/address", method = RequestMethod.GET)
+	public String findByAddress(String address, Model model) {
+
+		List<EmployeeBean> allEmployeeList = null;
+		
+				allEmployeeList = searchForEmployeeByAddressService.execute(address);
+
+		model.addAttribute("employees", allEmployeeList);
+		return "list/list";
+	}
+	
 }

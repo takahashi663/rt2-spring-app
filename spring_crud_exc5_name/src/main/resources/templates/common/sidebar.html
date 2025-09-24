@@ -35,6 +35,35 @@
 	     <input type="submit" value="検索" />
 	    </form>
 	  </div>
+ <div class="title">権限検索</div>
+	  <div class="form">
+	    <form th:action="@{/list/authority}" method="get">
+
+	     <span th:if="${selectedAuthority == null}">
+	      	<select name="authority">
+	        	<option value="1"selected>一般</option>
+	        	<option value="2">管理者</option>
+	      	</select>
+	     </span>
+
+	     <span th:unless="${selectedAuthority == null}">
+	     	<select name="authority">
+	      		<option value="1" th:selected="${selectedAuthority}== '1'">一般</option>
+	        	<option value="2" th:selected="${selectedAuthority}== '2'">管理者</option>
+	       		
+	      	</select>
+	     </span>
+
+	     <input type="submit" value="検索" />
+	    </form>
+	  </div>
+	 <div class="title">住所検索</div>
+	  <div class="form">
+	    <form th:action="@{/list/address}" method="get">
+	      <input type="text" name="address" />
+	      <input type="submit" value="検索" />
+	    </form>
+	
 	</aside>
 </body>
 </html>
