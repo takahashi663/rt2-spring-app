@@ -14,6 +14,7 @@ import jp.co.sss.crud.service.SearchAllEmployeesService;
 import jp.co.sss.crud.service.SearchForEmployeeByAddressService;
 import jp.co.sss.crud.service.SearchForEmployeeByAuthorityService;
 import jp.co.sss.crud.service.SearchForEmployeesByDepartmentService;
+import jp.co.sss.crud.service.SearchForEmployeesByEmpIdService;
 import jp.co.sss.crud.service.SearchForEmployeesByEmpNameService;
 
 @Controller
@@ -33,6 +34,9 @@ public class ListController {
 	
 	@Autowired
 	SearchForEmployeeByAddressService searchForEmployeeByAddressService;
+	
+	@Autowired
+	SearchForEmployeesByEmpIdService searchForEmployeesByEmpIdService;
 	/**
 	 * 社員情報を全件検索した結果を出力
 	 *
@@ -111,5 +115,5 @@ public class ListController {
 		model.addAttribute("employees", allEmployeeList);
 		return "list/list";
 	}
-	
+
 }
