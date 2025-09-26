@@ -32,7 +32,7 @@ public class EmployeeForm {
 
 	/** 住所 */
 	@NotBlank
-	@Size(max = 60,message="社員名は60文字以内で入力してください。")
+	@Size(max = 60,message="住所は60文字以内で入力してください。")
 	private String address;
 
 	/** 生年月日 */
