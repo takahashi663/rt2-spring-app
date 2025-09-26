@@ -10,7 +10,7 @@ import jakarta.validation.constraints.Pattern;
 public class LoginForm {
 	/** 社員ID */
 	
-	@Min(value = 1)
+	@Min(value = 1,message="{Pattern.LoginForm.empId}")
 	@Max(value = 99999)
 	@NotNull
 	private Integer empId;
